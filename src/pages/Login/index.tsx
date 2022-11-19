@@ -1,6 +1,8 @@
 import { useForm } from "react-hook-form";
+
 import Button from "../../components/Button";
 import Input from "../../components/Input";
+
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 
@@ -28,19 +30,26 @@ const Login = () => {
     reValidateMode: "onChange",
   });
 
+  console.log(isValid);
+  
+
   return (
     <Container>
       <LoginContainer>
         <Column>
           <Title>Login</Title>
+
           <Spacing />
+
           <Input
             name="email"
             placeholder="Email"
             control={control}
             errorMessage={errors?.email?.message}
           />
+
           <Spacing />
+
           <Input
             name="password"
             type="password"
@@ -48,12 +57,19 @@ const Login = () => {
             control={control}
             errorMessage={errors?.password?.message}
           />
+
           <Spacing />
-          <Button title="Entrar" />
+
+          <Button title="Entrar" disabled={!isValid} onClick={() => console.log('OK')}/>
+
         </Column>
+
       </LoginContainer>
+
     </Container>
+
   );
+
 };
 
 export default Login;
